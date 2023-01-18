@@ -1,15 +1,12 @@
 # Dockerfile to build a flask app
 
-FROM python:3.9
+FROM python:3.8-slim-buster
 
-WORKDIR /usr/app
+WORKDIR /usr/ 
 
-COPY requirements.txt .
-
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
-
-CMD ["python", "app.py"]
+CMD [ "python", "-m" , "flask", "run"]
